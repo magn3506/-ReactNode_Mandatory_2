@@ -1,42 +1,41 @@
 "use strict";
 
 // IMPORT MODULES
-const express = require("express");
+const express = require('express');
+const app = express(); // express app
 const path = require('path');
-const app = express();
-// ------------------------
+const session = require("express-session");
 
 const PORT = process.env.PORT || 9000; // SET PORT CONFIG
 
-
-// GIVE CORS ACCESS
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header('Access-Control-Allow-Methods', 'PATCH, POST, GET, DELETE');
-    next();
-});
-
-// Serve static files from the React app
-// app.use(express.static(path.join(path.resolve(__dirname, '..'), 'client/build')));
 
 // ! ALOW TO READ JSON - READ UP ON WHAT AND WHY
 app.use(express.urlencoded({ extended: true })); // ??
 app.use(express.json()); // ??
 
+// INITIALIZE SESSION
+app.use(session({
+    name: "userID",
+    secret: "randomSecreMessage",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false, httpOnly: false },
+
+}));
+
+// Serve static files from the React app
+app.use(express.static(path.join(path.resolve(__dirname, '..'), 'client/build')));
 
 // REQUIRE ROUTES
-// USER
-const user = require("./routes/user/user");
-app.use("/api/user", user);
-// ! LOGIN
-// ! LOGOUT
+// AUTH
+const auth = require("./routes/auth/auth");
+app.use("/api/auth", auth);
 
 
-// ROOT INDEX
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(path.resolve(__dirname, '..'), '/client/build/index.html'));
-// });
+app.get('*', (req, res) => {
+    res.sendFile(path.join(path.resolve(__dirname, '..'), '/client/build/index.html'));
+});
+
 
 // LISTEN
 app.listen(PORT, err => {
