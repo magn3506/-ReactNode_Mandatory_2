@@ -1,5 +1,6 @@
 const logout = (req, res) => {
-    res.send("login");
+    res.clearCookie('userID');
+    res.status(200).send("Logout")
 }
 
 module.exports = logout;

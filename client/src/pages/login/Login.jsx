@@ -38,7 +38,7 @@ function Login(props) {
         const result = await response;
 
         if (result.status === 200) {
-            props.history.push("/home");
+            props.history.push("/app");
         }
 
     }
