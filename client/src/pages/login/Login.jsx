@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 
 
 function Login(props) {
@@ -50,6 +51,8 @@ function Login(props) {
                 <input type="text" placeholder="password" onChange={handleSetPassword} />
                 <button type="submit" >Login</button>
             </form>
+            <Link to="/signup">Sign up</Link>
+
 
         </div>
     )

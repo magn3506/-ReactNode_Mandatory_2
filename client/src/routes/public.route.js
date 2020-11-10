@@ -10,7 +10,7 @@ export const PublicRoute = ({
         <Route
             {...rest}
             render={props => {
-                if (!auth.isAuthenticated()) {
+                if (auth.isAuthenticated() === false) {
                     return <Component {...props} />;
                 } else {
                     return (

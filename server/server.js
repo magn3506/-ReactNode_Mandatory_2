@@ -13,8 +13,9 @@ const PORT = process.env.PORT || 9000; // SET PORT CONFIG
 app.use(express.urlencoded({ extended: true })); // ??
 app.use(express.json()); // ??
 
+// TODO: MOVE THIS SESSION TO API/AUTH
 // INITIALIZE SESSION
-app.use(session({
+app.use("/api/auth", session({
     name: "userID",
     secret: "randomSecreMessage",
     resave: false,
@@ -30,6 +31,9 @@ app.use(express.static(path.join(path.resolve(__dirname, '..'), 'client/build'))
 // AUTH
 const auth = require("./routes/auth/auth");
 app.use("/api/auth", auth);
+// USER
+const user = require("./routes/user/user");
+app.use("/api/user", user);
 
 
 app.get('*', (req, res) => {

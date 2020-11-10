@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react'
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ProtectedRoute } from "./routes/protected.route";
 import { PublicRoute } from "./routes/public.route";
 
@@ -15,10 +15,10 @@ function App() {
   return (
     <Router>
       <Switch>
-        <PublicRoute path="/" component={LOGIN} />
-        <PublicRoute path="/login" component={LOGIN} />
-        <PublicRoute path="/signup" component={SIGNUP} />
         <ProtectedRoute exact path="/app" component={APP} />
+        <PublicRoute exact path="/" component={LOGIN} />
+        <PublicRoute path="/signup" component={SIGNUP} />
+        <PublicRoute path="/login" component={LOGIN} />
       </Switch>
     </Router>
 
