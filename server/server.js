@@ -6,6 +6,7 @@ const express = require('express');
 const app = express(); // express app
 const path = require('path');
 const session = require("express-session");
+const rateLimit = require("express-rate-limit");
 
 const PORT = process.env.PORT || 9000; // SET PORT CONFIG
 
@@ -13,6 +14,20 @@ const PORT = process.env.PORT || 9000; // SET PORT CONFIG
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
+// RATE LIMITER
+// Enable if you're behind a reverse proxy (Heroku, Bluemix, AWS ELB, Nginx, etc)
+// see https://expressjs.com/en/guide/behind-proxies.html
+// app.set('trust proxy', 1);
+
+const apiLimiter = rateLimit({
+    windowMs: 10 * 60 * 1000, // 10 minutes
+    max: 100
+});
+
+// only apply to requests that begin with /api/
+app.use("/api/", apiLimiter);
+//-------------------------------------------------
 
 // TODO: MOVE THIS SESSION TO API/AUTH
 // ! INITIALIZE SESSION - ONLY ON ALL* POST REQUEST MADE FOR /api/auth
