@@ -49,11 +49,10 @@ function Login(props) {
             <form onSubmit={handleSubmitForm}>
                 <input type="email" placeholder="email" onChange={handleSetEmail} />
                 <input type="text" placeholder="password" onChange={handleSetPassword} />
+                <Link to="/forgot_password">Forgot Password?</Link>
                 <button type="submit" >Login</button>
             </form>
             <Link to="/signup">Sign up</Link>
-
-
         </div>
     )
 }

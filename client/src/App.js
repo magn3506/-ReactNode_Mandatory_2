@@ -9,6 +9,9 @@ import { PublicRoute } from "./routes/public.route";
 import APP from "./pages/app/App";
 import LOGIN from "./pages/login/Login";
 import SIGNUP from "./pages/signup/Signup";
+import FORGOT_PASSWORD from "./pages/forgot_password/Forgot_password";
+import NOT_FOUND from "./pages/not_found/Not_found";
+
 // TODO: CREATE 404-not found page
 
 function App() {
@@ -20,7 +23,8 @@ function App() {
         <PublicRoute exact path="/" component={LOGIN} />
         <PublicRoute path="/signup" component={SIGNUP} />
         <PublicRoute path="/login" component={LOGIN} />
-        <Route path="*" component={() => "404 NOT FOUND"} />
+        <PublicRoute path="/forgot_password" component={FORGOT_PASSWORD} />
+        <Route path="*" component={NOT_FOUND} />
       </Switch>
     </Router>
 

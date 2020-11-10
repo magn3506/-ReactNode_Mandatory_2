@@ -33,11 +33,13 @@ app.use("/api/", apiLimiter);
 // ! INITIALIZE SESSION - ONLY ON ALL* POST REQUEST MADE FOR /api/auth
 app.post("/api/auth/*", session({
     name: "userID",
+    resave: false,
+    saveUninitialized: true,
     secret: process.env.SESSION_SECRET,
     cookie: {
         secure: (process.env.DEV_OR_PROD === "PRODUCTION") ? true : false,
         httpOnly: false
-    }, // ! SET secure true on prod for https
+    },
 }));
 
 // Serve static files from the client React build folder
@@ -51,6 +53,9 @@ app.use("/api/auth", auth);
 const user = require("./routes/user/user");
 app.use("/api/user", user);
 
+// mailer
+const mailer = require("./routes/mailer/mailer");
+app.use("/api/mailer", mailer);
 
 // SEND ALL REQUEST WICH DOESNOT MATCH TO CLIENT REACT BIILD INDEX FILE
 // 404-page is handled in react-frontend-clientside
