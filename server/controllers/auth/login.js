@@ -41,7 +41,9 @@ const login = (req, res) => {
             if (user) {
                 res.status(200).send(user);
 
-                req.session.userID = user._id;
+                // req.session.userID = user._id;
+                req.session.userID = "MY ID CODE";
+
                 console.log()
                 return;
 

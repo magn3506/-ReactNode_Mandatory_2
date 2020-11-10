@@ -1,6 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
-const db = require('../config/keys').mongoURI;
-const uri = db;
+
+const uri = process.env.MONGO_DB_URI;
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
