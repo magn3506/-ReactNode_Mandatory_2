@@ -62,7 +62,6 @@ function Reset_password(props) {
 
     return (
         <div>
-
             {isSucceded}
         </div>
     )
