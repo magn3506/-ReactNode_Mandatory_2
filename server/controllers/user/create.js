@@ -1,4 +1,6 @@
 const client = require('../../db/connection');
+const bcrypt = require('bcrypt');
+
 
 
 const createUser = (req, res) => {
@@ -34,15 +36,37 @@ const createUser = (req, res) => {
         const db = client.db("KiwiQuiz");
         const collection = db.collection("Users");
 
-        const newUserObj = body;
 
-        collection.insertOne(newUserObj, function (err) {
-            if (err) throw err;
-            res.status(200).send("User was created");
-            return;
-        })
+        // ENCRYPT PASSWORD
+        const saltRounds = 10;
+        bcrypt.hash(reqPassword, saltRounds, function (err, hash) {
+
+            if (err) {
+                throw err;
+                return;
+            }
+
+            // CREATE NEW USER OBJ
+            const newUserObj = {
+                email: reqEmail,
+                password: hash
+            }
+
+            // ADD TO DB
+            collection.insertOne(newUserObj, function (err) {
+                if (err) throw err;
+                res.status(200).send("User was created");
+                return;
+            })
+
+        });
+
+
+
+
 
     });
 }
 
 module.exports = createUser;
+

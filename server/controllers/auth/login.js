@@ -1,4 +1,7 @@
 const client = require('../../db/connection');
+const bcrypt = require('bcrypt');
+
+
 
 const login = (req, res) => {
 
@@ -16,7 +19,7 @@ const login = (req, res) => {
     }
 
     const regEmail = body.email; // Email comming from client request
-    const regPassword = body.password; // Password comming from client request
+    const reqPassword = body.password; // Password comming from client request
 
     client.connect(err => {
         if (err) throw err;
@@ -25,7 +28,7 @@ const login = (req, res) => {
         const collection = db.collection("Users");
 
         // QUERY
-        const query = { email: regEmail, password: regPassword }; // return user if regData matches dbData
+        const query = { email: regEmail }; // return user if regData matches dbData
         const projection = { projection: { _id: 1, email: 1, password: 1 } } // RETURN ONLY email & password
 
         // Tjek if user log in credentials mathes the a user in DB
@@ -39,13 +42,23 @@ const login = (req, res) => {
 
             //if a user was found 
             if (user) {
-                res.status(200).send(user);
 
-                // req.session.userID = user._id;
-                req.session.userID = "MY ID CODE";
 
-                console.log()
-                return;
+                // CHECK IF ENCRYPTET PASSWORD MATCHES DB PASSWORD
+                bcrypt.compare(reqPassword, user.password, function (err, result) {
+
+                    if (result === false) {
+                        res.status(400).send({ msg: "ERROR: WRONG PASSWORD" });
+                        return;
+                    }
+
+                    res.status(200).send(user);
+                    req.session.userID = user._id;
+                    return;
+
+                });
+
+
 
             } else {
                 // USER DOESENT EXIST. REDIRECT TO LOGIN PAGE
