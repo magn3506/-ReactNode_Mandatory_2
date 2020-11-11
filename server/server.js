@@ -1,7 +1,8 @@
 "use strict";
 
 // IMPORT MODULES
-require('dotenv').config()
+require('dotenv').config();
+const fs = require('fs');
 const express = require('express');
 const app = express(); // express app
 const path = require('path');
@@ -13,6 +14,7 @@ const PORT = process.env.PORT || 9000; // SET PORT CONFIG
 // ALLOW JSON BODY PARSER
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 
 
 // RATE LIMITER
@@ -60,6 +62,7 @@ app.use("/api/mailer", mailer);
 // SEND ALL REQUEST WICH DOESNOT MATCH TO CLIENT REACT BIILD INDEX FILE
 // 404-page is handled in react-frontend-clientside
 app.get('*', (req, res) => {
+
     res.sendFile(path.join(path.resolve(__dirname, '..'), '/client/build/index.html'));
 });
 

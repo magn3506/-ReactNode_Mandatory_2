@@ -16,10 +16,19 @@ const resetUserPasswordNodemailer = (req, res) => {
         }
     });
 
+
+    // CHANGE URL PATH DEPENDING ON PROD OR DEVELOPMENT
+    const dev_resetUserPassword_API_URL = "http://localhost:3000"; // TODO: IN PROD - ADD ENDPOINT     // IN DEVLOPMENT
+
+    const prod_resetUserPassword_API_URL = req.protocol + '://' + req.get('host'); // TODO: add endpint to reset API     // IN PRODUCTION
+
+
+    const resetUserPassword_API_URL = (process.env.DEV_OR_PROD === 'PRODUCTION') ? prod_resetUserPassword_API_URL : dev_resetUserPassword_API_URL;
+
     const HTML = `
         <h1>HI ${reqEmail}</h1>
         <p>You have requested to reset you password. Please follow the link below</p>
-        <a href="google.dk">Reset My Password</a>
+        <a href=${resetUserPassword_API_URL}>${resetUserPassword_API_URL}</a>
     `;
 
 
