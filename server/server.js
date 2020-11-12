@@ -31,18 +31,6 @@ const apiLimiter = rateLimit({
 app.use("/api/", apiLimiter);
 //-------------------------------------------------
 
-// TODO: MOVE THIS SESSION TO API/AUTH
-// ! INITIALIZE SESSION - ONLY ON ALL* POST REQUEST MADE FOR /api/auth
-app.post("/api/auth/*", session({
-    name: "userID",
-    resave: false,
-    saveUninitialized: true,
-    secret: process.env.SESSION_SECRET,
-    cookie: {
-        secure: (process.env.DEV_OR_PROD === "PRODUCTION") ? true : false,
-        httpOnly: false
-    },
-}));
 
 // Serve static files from the client React build folder
 app.use(express.static(path.join(path.resolve(__dirname, '..'), 'client/build')));

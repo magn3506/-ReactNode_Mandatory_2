@@ -8,7 +8,16 @@ const auth = {
         } else {
             return false;
         }
+    },
+    isResetPasswordAuthenticated: () => {
+        const resetPasswordID = Cookies.get("resetPasswordID");
+        if (resetPasswordID) {
+            return true;
+        } else {
+            return false;
+        }
     }
+
 }
 
 export default auth;

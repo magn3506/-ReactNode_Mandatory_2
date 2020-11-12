@@ -2,20 +2,18 @@ const client = require('../../db/connection');
 const bcrypt = require('bcrypt');
 
 
-
 const login = (req, res) => {
 
     const body = req.body;
 
-    // TJEK IF BODY IS EMPTY
-    const isEmpty = Object.keys(body).length === 0 && body.constructor === Object;
 
     // EXIT SCRIPT IF BODY IS EMPTY
-    if (isEmpty) {
+    if (body.email.length === 0 || body.password.length === 0) {
 
-        return res.status(400).send({
+        res.status(400).send({
             msg: "Body is empty",
         });
+        return;
     }
 
     const regEmail = body.email; // Email comming from client request
@@ -36,14 +34,13 @@ const login = (req, res) => {
 
             if (err) {
                 //handle error here if any
+                console.log("ERROR: WHEN DB")
                 res.status(400).send({ err, msg: "ERROR HAS ACCURED" });
                 return;
             }
 
             //if a user was found 
             if (user) {
-
-
                 // CHECK IF ENCRYPTET PASSWORD MATCHES DB PASSWORD
                 bcrypt.compare(reqPassword, user.password, function (err, result) {
 
@@ -52,12 +49,12 @@ const login = (req, res) => {
                         return;
                     }
 
+                    res.cookie('userID', user._id);
                     res.status(200).send(user);
-                    req.session.userID = user._id;
+
                     return;
 
                 });
-
 
 
             } else {
