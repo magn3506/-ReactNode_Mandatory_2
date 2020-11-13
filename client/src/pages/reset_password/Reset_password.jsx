@@ -46,6 +46,11 @@ function Reset_password(props) {
 
         const result = await response;
 
+        if (result.status !== 200) {
+            console.log(result);
+            console.log("ERROR IN FRONT");
+        }
+
         if (result.status === 200) {
             props.history.push("/login");
         }
