@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import Logo from "../../assets/logo/KiwiQuiz_Logo.svg"
+import "./Login.css";
 
 
 function Login(props) {
@@ -44,15 +46,22 @@ function Login(props) {
 
     }
 
+    const baseClass = "login";
+
     return (
-        <div>
-            <form onSubmit={handleSubmitForm}>
-                <input type="email" placeholder="email" onChange={handleSetEmail} />
-                <input type="text" placeholder="password" onChange={handleSetPassword} />
-                <Link to="/forgot_password">Forgot Password?</Link>
-                <button type="submit" >Login</button>
+        <div className={`${baseClass}_content_wrapper`}>
+            <div className={`${baseClass}_logo_container`}>
+                <img className={`${baseClass}_logo`} src={Logo} alt="logo" />
+            </div>
+            <hr className={`${baseClass}_line`}></hr>
+            <form className={`${baseClass}_form`} onSubmit={handleSubmitForm}>
+                <input className={`${baseClass}_email input`} type="email" placeholder="Email" onChange={handleSetEmail} />
+                <input className={`${baseClass}_password input`} type="text" placeholder="Password" onChange={handleSetPassword} />
+                <Link className={`${baseClass}_link`} to="/forgot_password">Forgot Password?</Link>
+                <button className={`${baseClass}_submit-button`} type="submit" >Login</button>
+                <Link className={`${baseClass}_link`} to="/signup">Sign up</Link>
+
             </form>
-            <Link to="/signup">Sign up</Link>
         </div>
     )
 }

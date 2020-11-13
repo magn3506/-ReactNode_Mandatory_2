@@ -1,10 +1,14 @@
-import './App.css';
+
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ProtectedRoute } from "./routes/protected.route";
 import { PublicRoute } from "./routes/public.route";
 import { ProtectedResetPasswordRoute } from "./routes/protected.resetPassword.route";
 
+// STYLES
+import "./styles/reset/Reset.css";
+import "./styles/colors/Colors.css";
+import './Global.css';
 
 // PAGES
 import APP from "./pages/app/App";
