@@ -41,7 +41,7 @@ const resetUserPassword = (req, res) => {
 
             const newvalues = {
                 $set: {
-                    isResetPassAuth: 1,
+                    isResetPassAuth: 0,
                     resetToken: null,
                     password: hash
                 },
