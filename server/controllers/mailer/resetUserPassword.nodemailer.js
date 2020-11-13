@@ -28,12 +28,12 @@ const resetUserPasswordNodemailer = (req, res) => {
         collection.updateOne(query, newvalues, function (err, result) {
             if (err) throw err;
 
-            // // ! IF USER NOT IN DB KILL SCRIPT
-            // if (result.matchedCount !== 1) {
-            //     console.log("eror");
-            //     res.status(400).send("ERROR");
-            //     return;
-            // }
+            // ! IF USER NOT IN DB KILL SCRIPT
+            if (result.matchedCount !== 1) {
+                console.log("eror");
+                res.status(400).send("ERROR");
+                return;
+            }
 
             const transporter = nodemailer.createTransport({
                 service: "hotmail",
