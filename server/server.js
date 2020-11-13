@@ -26,6 +26,7 @@ const apiLimiter = rateLimit({
     max: 100
 });
 
+
 // only apply to requests that begin with /api/
 app.use("/api/", apiLimiter);
 //-------------------------------------------------
