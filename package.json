@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server/server.js",
     "heroku-postbuild": "cd client && npm install && npm run build",
+    "deploy": "npm heroku-postbuild && git push heroku main",
     "server-dev": "nodemon server/server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server-dev\" \"npm run client\""
