@@ -53,7 +53,7 @@ function Login(props) {
             <div className={`${baseClass}_logo_container`}>
                 <img className={`${baseClass}_logo`} src={Logo} alt="logo" />
             </div>
-            <hr className={`${baseClass}_line`}></hr>
+            <div className={`${baseClass}_line`}></div>
             <form className={`${baseClass}_form`} onSubmit={handleSubmitForm}>
                 <input className={`${baseClass}_email input`} type="email" placeholder="Email" onChange={handleSetEmail} />
                 <input className={`${baseClass}_password input`} type="text" placeholder="Password" onChange={handleSetPassword} />
