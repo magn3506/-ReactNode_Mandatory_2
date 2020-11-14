@@ -2,8 +2,9 @@ import Cookies from "js-cookie";
 
 const auth = {
     isAuthenticated: () => {
-        const userID = Cookies.get("userID");
-        if (userID) {
+        const isUserAuth_cookie = Cookies.get("isUserAuth_kiwiQuiz");
+
+        if (isUserAuth_cookie === "true") {
             return true;
         } else {
             return false;

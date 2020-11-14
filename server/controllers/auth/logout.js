@@ -1,5 +1,6 @@
 const logout = (req, res) => {
-    res.clearCookie('userID');
+    res.clearCookie('isUserAuth_kiwiQuiz');
+    req.session.secretMessage = undefined; // SET SESSION = USER_ID
     res.status(200).send("Logout")
 }
 

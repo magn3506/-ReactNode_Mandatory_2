@@ -49,9 +49,10 @@ const login = (req, res) => {
                         return;
                     }
 
-                    res.cookie('userID', user._id);
-                    res.status(200).send(user);
 
+                    req.session.secretMessage = user._id; // SET SESSION = USER_ID
+                    res.cookie('isUserAuth_kiwiQuiz', true); // SET COOKIE FOR CLIENT AUTH
+                    res.status(200).send("logoed in");
                     return;
 
                 });

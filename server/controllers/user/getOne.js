@@ -1,5 +1,7 @@
 const getUser = (req, res) => {
-    res.send("Get User");
+
+    console.log(req.session.secretMessage);
+    return res.status(200).send({ data: req.session.secretMessage });
 
 }
 

@@ -14,15 +14,7 @@ const resetUserPassword = require("../../controllers/auth/resetUserPassword");
 
 // Routes
 router
-    .post("/login", session({
-        resave: false,
-        saveUninitialized: true,
-        secret: process.env.SESSION_SECRET,
-        cookie: {
-            secure: (process.env.DEV_OR_PROD === "PRODUCTION") ? true : false,
-            httpOnly: false
-        },
-    }), login) // Login
+    .post("/login", login) // Login
     .post("/logout", logout) // Login
     .get("/resetUserPassword/:resetPasswordToken/:email", session({
         name: "resetPasswordID",

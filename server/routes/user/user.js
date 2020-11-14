@@ -4,7 +4,7 @@ const express = require("express");
 let router = express.Router();
 
 // CONTROLLERS
-const getUsers = require("../../controllers/user/getAll");
+// const getUsers = require("../../controllers/user/getAll");
 const getUser = require("../../controllers/user/getOne");
 const createUser = require("../../controllers/user/create");
 const updateUser = require("../../controllers/user/update");
@@ -13,8 +13,7 @@ const resetUserPassword = require("../../controllers/user/resetUserPassword");
 
 // Routes
 router
-    .get("/", getUsers) // GET ALL USERS
-    .get("/:id", getUser) // GET USER BY ID
+    .get("/", getUser) // GET USER BY ID
     .post("/", createUser) // CREATE USER
     .patch("/update/:id", updateUser) // UPDATE USER BY ID
     .delete("/:id", deleteUser) // DELETE USER BY ID

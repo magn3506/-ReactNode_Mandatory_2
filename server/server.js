@@ -2,11 +2,10 @@
 
 // IMPORT MODULES
 require('dotenv').config();
-const fs = require('fs');
 const express = require('express');
 const app = express(); // express app
-const path = require('path');
 const session = require("express-session");
+const path = require('path');
 const rateLimit = require("express-rate-limit");
 
 const PORT = process.env.PORT || 9000; // SET PORT CONFIG
@@ -26,6 +25,16 @@ const apiLimiter = rateLimit({
     max: 100
 });
 
+// SET SESSTION
+app.use("/api/", session({
+    resave: false,
+    saveUninitialized: true,
+    secret: process.env.SESSION_SECRET,
+    cookie: {
+        secure: (process.env.DEV_OR_PROD === "PRODUCTION") ? true : false,
+        httpOnly: false
+    },
+}));
 
 // only apply to requests that begin with /api/
 app.use("/api/", apiLimiter);
