@@ -8,6 +8,7 @@ import { ProtectedResetPasswordRoute } from "./routes/protected.resetPassword.ro
 // STYLES
 import "./styles/reset/Reset.css";
 import "./styles/colors/Colors.css";
+import "./styles/fonts/Fonts.css";
 import './Global.css';
 
 // PAGES

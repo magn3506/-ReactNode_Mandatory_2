@@ -11,6 +11,7 @@ body{
 
 }
 
+
 .login_logo_container{
     max-width: 300px;
     margin: 0 auto;
@@ -26,11 +27,16 @@ body{
 }
 
 .input{
-    max-width: 250px;
-    height: 50px;
+    max-width: 300px;
+    height: 60px;
     padding: 20px;
     border-radius: 0px 100px 100px 0px;
-
+    font-family: var(--IBM);
+    font-weight: 700;
+    border: none;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    outline: none;
 }
 
 .login_line{
@@ -38,8 +44,8 @@ height: 5px;
 background-color: var(--color-orange-2);
 max-width: 500px;
 border-radius: 100px;
-border: none;
 
+border: none;
 margin: 20px auto;
 
 }
@@ -48,20 +54,43 @@ margin: 20px auto;
 .login_password{}
 .login_link{
     margin-bottom: 20px;
-    margin-top: 10px;
     color: var(--color-orange-1);
-    font-family: sans-serif;
     font-weight: 400;
-    font-size: 1.1em;
+    font-size: 1.1em; 
+    font-family: var(--IBM);
+    font-weight: 500;
+    
 }
 
 .login_submit-button{
-    max-width: 250px;
-    height: 50px;
+    max-width: 170px;
+    height: 60px;
     border-radius: 0px 100px 100px 0px;
-    text-align: center;
+    text-align: left;
     border: none;
     font-size: 1.5em;
     background-color: var(--color-orange-1);
     color: var(--color-white);
+    margin-bottom: 10px;
+    padding-left: 20px;
+    outline: none;
+
+}
+
+
+
+@media only screen and (min-width: 600px) {
+   
+    .login_content_wrapper{
+        width: 600px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -60%);
+    }
+
+    .login_form{
+        margin: 40px auto;
+    }
+    
 }
