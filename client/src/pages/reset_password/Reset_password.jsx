@@ -68,15 +68,16 @@ function Reset_password(props) {
         return true;
     };
 
+    const baseClass = "reset_password";
 
     return (
-        <div>
-            <h1>RESET PASSWORD</h1>
-            <form onSubmit={handleSubmitForm}>
-                <input type="text" placeholder="password" onChange={handleSetPassword} />
-                <input type="text" placeholder="repeat password" onChange={handleSetRepeatPassword} />
-                {errorMsg && <div>{errorMsg}</div>}
-                <button type="submit">RESET</button>
+        <div className={`${baseClass}_content_wrapper`}>
+            <h1 className={`${baseClass}_title`} >RESET PASSWORD</h1>
+            <form className={`${baseClass}_form`} onSubmit={handleSubmitForm}>
+                <input className={`${baseClass}_password ${baseClass}_input`} type="text" placeholder="password" onChange={handleSetPassword} />
+                <input className={`${baseClass}_repeat_password ${baseClass}_input`} type="text" placeholder="repeat password" onChange={handleSetRepeatPassword} />
+                <div className={`${baseClass}_error-msg`} >{errorMsg && errorMsg}</div>
+                <button className={`${baseClass}_submit-button`} type="submit">RESET</button>
             </form>
         </div>
     )
