@@ -9,9 +9,6 @@ const resetUserPassword = (req, res) => {
     const reqPasswordToken = req.params.resetPasswordToken;
     const reqEmail = req.params.email;
 
-    // SET SESSION FOR FRONT END AUTH
-    req.session.resetPasswordID = reqPasswordToken;
-
     client.connect(err => {
         if (err) throw err;
 
@@ -35,6 +32,8 @@ const resetUserPassword = (req, res) => {
                 return;
             };
 
+            res.cookie('resetPasswordID', true); // SET COOKIE FOR CLIENT AUTH
+
             // REDIRECT USER
             const dev_redirectURL = `http://localhost:3000/resetPassword/${reqPasswordToken}`;
             const prod_redirectURL = `/resetPassword/${reqPasswordToken}`;
@@ -48,3 +47,4 @@ const resetUserPassword = (req, res) => {
 }
 
 module.exports = resetUserPassword;
+

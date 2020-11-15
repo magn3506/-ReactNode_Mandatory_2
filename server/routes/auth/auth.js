@@ -3,7 +3,6 @@
 const express = require("express");
 require('dotenv').config();
 let router = express.Router();
-const session = require("express-session");
 
 
 // CONTROLLERS
@@ -16,15 +15,6 @@ const resetUserPassword = require("../../controllers/auth/resetUserPassword");
 router
     .post("/login", login) // Login
     .post("/logout", logout) // Login
-    .get("/resetUserPassword/:resetPasswordToken/:email", session({
-        name: "resetPasswordID",
-        resave: false,
-        saveUninitialized: true,
-        secret: process.env.SESSION_SECRET,
-        cookie: {
-            secure: (process.env.DEV_OR_PROD === "PRODUCTION") ? true : false,
-            httpOnly: false
-        }
-    }), resetUserPassword);
+    .get("/resetUserPassword/:resetPasswordToken/:email", resetUserPassword);
 
 module.exports = router;

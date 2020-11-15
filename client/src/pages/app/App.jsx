@@ -1,12 +1,10 @@
 
-
+import "./App.css";
 
 function Home(props) {
 
     const handleLogout = async event => {
         event.preventDefault();
-
-        const payload = {};
 
         const response = await fetch("api/auth/logout", {
             headers: {
@@ -14,7 +12,7 @@ function Home(props) {
                 'Content-Type': 'application/json'
             },
             method: "POST",
-            body: JSON.stringify(payload),
+            body: JSON.stringify({}),
 
         });
 
@@ -24,10 +22,14 @@ function Home(props) {
             props.history.push("/login");
         }
     }
+
     return (
         <div>
-            <h1>APP</h1>
+            <h1>Hello "INSERT EMAIL" YOU ARE NOW LOGGET IN</h1>
             <button onClick={handleLogout}>LOG OUT</button>
+            <div>
+                GAME
+            </div>
         </div>
     )
 

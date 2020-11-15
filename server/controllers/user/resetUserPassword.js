@@ -6,7 +6,7 @@ const resetUserPassword = (req, res) => {
 
 
     // CLEAR COOKIE
-    res.clearCookie('resetPasswordID');
+    // res.clearCookie('resetPasswordID');
 
     const body = req.body;
     const resetToken = body.resetToken;

@@ -1,0 +1,18 @@
+.not_found_content_wrapper{
+
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.not_found_title{
+    color: var(--color-orange-2);
+    font-size: 2em;
+}
+.not_found_link{
+
+   margin-top: 50px;
+   display: block;
+   color: var(--color-white);
+   font-size: 1.3em;
+}

@@ -7,6 +7,7 @@ const resetUserPasswordNodemailer = (req, res) => {
 
     const body = req.body;
     const reqEmail = body.email;
+    console.log(body);
 
     // TJEK IF EMAIL IS IN DB
 

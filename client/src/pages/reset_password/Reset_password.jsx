@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from "react-router-dom";
+import "./Reset_password.css";
 
 function Reset_password(props) {
 
@@ -34,7 +35,7 @@ function Reset_password(props) {
             resetToken: resetToken
         };
 
-        const response = await fetch("/api/user/resetUserpassword", {
+        const response = await fetch("/api/user/resetUserPassword", {
             headers: {
                 Accept: 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
@@ -59,6 +60,13 @@ function Reset_password(props) {
 
     const isPasswordsValidated = () => {
 
+        if (password.length === 0 || repeatPassword.length === 0) {
+            setErrorMsg("PLEASE FILL OUT THE WHOLE FORM !");
+            return false;
+        }
+
+
+
         if (password !== repeatPassword) {
             setErrorMsg("PASSWORDS MUST MATCH");
             return false;
@@ -75,7 +83,7 @@ function Reset_password(props) {
             <h1 className={`${baseClass}_title`} >RESET PASSWORD</h1>
             <form className={`${baseClass}_form`} onSubmit={handleSubmitForm}>
                 <input className={`${baseClass}_password ${baseClass}_input`} type="text" placeholder="password" onChange={handleSetPassword} />
-                <input className={`${baseClass}_repeat_password ${baseClass}_input`} type="text" placeholder="repeat password" onChange={handleSetRepeatPassword} />
+                <input className={`${baseClass}_repeat_password ${baseClass}_input`} type="text" placeholder="Retype password" onChange={handleSetRepeatPassword} />
                 <div className={`${baseClass}_error-msg`} >{errorMsg && errorMsg}</div>
                 <button className={`${baseClass}_submit-button`} type="submit">RESET</button>
             </form>

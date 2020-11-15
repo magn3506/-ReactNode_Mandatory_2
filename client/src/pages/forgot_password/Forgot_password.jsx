@@ -8,6 +8,7 @@ function Reset_password(props) {
 
     const [email, setEmail] = useState("");
     const [isSucces, setIsSucces] = useState(false);
+    const counter = 4000;
 
     const handleSetEmail = event => {
         setEmail(event.target.value);
@@ -35,12 +36,17 @@ function Reset_password(props) {
 
         if (result.status === 200) {
             setIsSucces(true);
+
+            setTimeout(() => {
+                props.history.push("/login");
+            }, counter);
+
+
         }
 
     }
 
     const baseClass = "forgot_password";
-
 
     const isSucceded = isSucces ?
         (
@@ -48,6 +54,7 @@ function Reset_password(props) {
                 <h1 className={`${baseClass}_title`} >SUCCES!</h1>
                 <p className={`${baseClass}_text`}  >We have send an email to {email}</p>
                 <p className={`${baseClass}_text`} >Rember to tjek your spam folder</p>
+                <p className={`${baseClass}_text`} >You will be redirected to the login page in {counter / 1000} seconds</p>
             </div>
         ) :
         (
