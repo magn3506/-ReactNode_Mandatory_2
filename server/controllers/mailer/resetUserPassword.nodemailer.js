@@ -54,7 +54,7 @@ const resetUserPasswordNodemailer = (req, res) => {
             const HTML = `
                 <h1>HI ${reqEmail}</h1>
                 <p>You have requested to reset you password. Please follow the link below</p>
-                <a href=${resetUserPassword_API_URL}>${resetUserPassword_API_URL}</a>
+                <a href=${prod_resetUserPassword_API_URL}>${prod_resetUserPassword_API_URL}</a>
                 `;
 
 
