@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "DEV_OR_PROD='DEVELOPMENT' node server/server.js",
-    "heroku-postbuild": "cd client && npm install && DEV_OR_PROD='PRODUCTION' npm run build",
+    "start": "node server/server.js",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "deploy": "npm run heroku-postbuild && git push heroku main",
-    "server-dev": "DEV_OR_PROD='DEVELOPMENT' nodemon server/server.js",
+    "server-dev": "nodemon server/server.js",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"DEV_OR_PROD='DEVELOPMENT' npm run server-dev\" \"DEV_OR_PROD='DEVELOPMENT' npm run client\""
+    "dev": "concurrently \"npm run server-dev\" \" npm run client\""
   },
   "repository": {
     "type": "git",
