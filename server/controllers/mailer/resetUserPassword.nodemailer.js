@@ -46,7 +46,6 @@ const resetUserPasswordNodemailer = (req, res) => {
 
             // CHANGE URL PATH DEPENDING ON PROD OR DEVELOPMENT
             const dev_resetUserPassword_API_URL = `http://localhost:9000/api/auth/resetUserPassword/${resetToken}/${reqEmail}`; // TODO: IN PROD - ADD ENDPOINT     // IN DEVLOPMENT
-
             const prod_resetUserPassword_API_URL = req.protocol + '://' + req.get('host') + `/api/auth/resetUserPassword/${resetToken}/${reqEmail}`; // TODO: add endpint to reset API     // IN PRODUCTION
 
 
