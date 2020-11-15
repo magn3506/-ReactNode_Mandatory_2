@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import Logo from "../../assets/logo/KiwiQuiz_Logo_2.svg"
+import "./Signup.css";
 function Signup(props) {
 
     // STATE
@@ -23,12 +24,17 @@ function Signup(props) {
 
     const isPasswordsValidated = () => {
 
-        if (password !== repeatPassword) {
-            setErrorMsg("PASSWORDS MUST MATCH");
+        if (password.length === 0 || repeatPassword.length === 0 || email.length === 0) {
+            setErrorMsg("PLEASE FILL OUT THE WHOLE FORM !");
             return false;
         }
 
-        setErrorMsg("SUCCES");
+        if (password !== repeatPassword) {
+            setErrorMsg("PASSWORDS MUST MATCH !!");
+            return false;
+        }
+
+        setErrorMsg("");
         return true;
     };
 
@@ -71,16 +77,24 @@ function Signup(props) {
 
     }
 
+
+    const baseClass = "signup";
+
     return (
-        <div>
-            <form onSubmit={handleSubmitForm}>
-                <input type="email" placeholder="email" onChange={handleSetEmail} />
-                <input type="text" placeholder="password" onChange={handleSetPassword} />
-                <input type="text" placeholder="repeat password" onChange={handleSetRepeatPassword} />
-                <button type="submit" >Sign up</button>
-                <div>{errorMsg}</div>
+        <div className={`${baseClass}_content_wrapper`}>
+            <div className={`${baseClass}_logo_container`}>
+                <img className={`${baseClass}_logo`} src={Logo} alt="logo" />
+            </div>
+            <h1 className={`${baseClass}_title`} >SIGN UP</h1>
+            <div className={`${baseClass}_line`} ></div>
+            <form className={`${baseClass}_form`} onSubmit={handleSubmitForm}>
+                <div className={`${baseClass}_error-msg`} >{errorMsg}</div>
+                <input className={`${baseClass}_email ${baseClass}_input`} type="email" placeholder="Email" onChange={handleSetEmail} />
+                <input className={`${baseClass}_password ${baseClass}_input`} type="text" placeholder="Password" onChange={handleSetPassword} />
+                <input className={`${baseClass}_repeat_password ${baseClass}_input`} type="text" placeholder="Retype Password" onChange={handleSetRepeatPassword} />
+                <button className={`${baseClass}_submit-button`} type="submit" >Sign up</button>
+                <Link className={`${baseClass}_link`} to="/login">Log in</Link>
             </form>
-            <Link to="/login">Log in</Link>
 
         </div>
     )
