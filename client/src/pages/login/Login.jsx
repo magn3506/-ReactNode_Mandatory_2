@@ -61,7 +61,6 @@ function Login(props) {
                 <Link className={`${baseClass}_link`} to="/forgot_password">Forgot Password?</Link>
                 <button className={`${baseClass}_submit-button`} type="submit" >Login</button>
                 <Link className={`${baseClass}_link`} to="/signup">Sign up</Link>
-
             </form>
         </div>
     )
