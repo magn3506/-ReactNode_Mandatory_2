@@ -20,6 +20,7 @@ function Quiz(props) {
                 props.nextQuestion();
                 setIsAnswerCorrect(null);
             }, 2000)
+            return;
         }
 
         setIsAnswerCorrect("WRONG ANSWER");
@@ -27,6 +28,8 @@ function Quiz(props) {
             props.nextQuestion();
             setIsAnswerCorrect(null);
         }, 2000)
+        return;
+
 
     }
 
