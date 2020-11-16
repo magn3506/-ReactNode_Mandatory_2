@@ -33,8 +33,8 @@ function Layout(props) {
 
     return (
         <div>
-            <header>
-                <nav className={`${baseClass}_nav_wrapper`}>
+            <div>
+                <div className={`${baseClass}_nav_wrapper`}>
                     <div className={`${baseClass}_nav_container`}>
                         <div className={`${baseClass}_user_container`}>
                             <div className={`${baseClass}_user_img_con`}>
@@ -49,8 +49,8 @@ function Layout(props) {
                             <button className={`${baseClass}_sign-out_btn`} onClick={handleLogout} >Sign Out</button>
                         </div>
                     </div>
-                </nav>
-            </header>
+                </div>
+            </div>
             {props.children}
         </div>
     )
