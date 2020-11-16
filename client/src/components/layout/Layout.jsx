@@ -33,21 +33,19 @@ function Layout(props) {
 
     return (
         <div>
-            <div>
-                <div className={`${baseClass}_nav_wrapper`}>
-                    <div className={`${baseClass}_nav_container`}>
-                        <div className={`${baseClass}_user_container`}>
-                            <div className={`${baseClass}_user_img_con`}>
-                                <img className={`${baseClass}_user_img`} src="https://randomuser.me/api/portraits/lego/1.jpg" alt="userimage" />
-                            </div>
-                            <div className={`${baseClass}_user_email`}> *{userEmail && userEmail}</div>
+            <div className={`${baseClass}_nav_wrapper`}>
+                <div className={`${baseClass}_nav_container`}>
+                    <div className={`${baseClass}_user_container`}>
+                        <div className={`${baseClass}_user_img_con`}>
+                            <img className={`${baseClass}_user_img`} src="https://randomuser.me/api/portraits/lego/1.jpg" alt="userimage" />
                         </div>
-                        <div className={`${baseClass}_logo_container`}>
-                            <img className={`${baseClass}_logo`} src={Logo} alt="userimage" />
-                        </div>
-                        <div className={`${baseClass}_button_container`}>
-                            <button className={`${baseClass}_sign-out_btn`} onClick={handleLogout} >Sign Out</button>
-                        </div>
+                        <div className={`${baseClass}_user_email`}> *{userEmail && userEmail}</div>
+                    </div>
+                    <div className={`${baseClass}_logo_container`}>
+                        <img className={`${baseClass}_logo`} src={Logo} alt="userimage" />
+                    </div>
+                    <div className={`${baseClass}_button_container`}>
+                        <button className={`${baseClass}_sign-out_btn`} onClick={handleLogout} >Sign Out</button>
                     </div>
                 </div>
             </div>
