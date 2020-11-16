@@ -1,0 +1,26 @@
+.spinner_container{
+    width: 100%;
+    color: var(--color-orange-2);
+    display: flex;
+}
+
+.spinner_icon{
+    width: 40px;
+    height: 40px;
+    margin: 50px auto;
+    animation: infinite-spinning .7s infinite ease-in;
+    position: relative;
+
+}
+
+@keyframes infinite-spinning {
+    0% {
+      transform: rotate(0deg);
+    }
+   
+
+    to {
+      transform: rotate(-360deg)
+
+    }
+  }

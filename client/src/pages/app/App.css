@@ -1,7 +1,19 @@
-div{
+div {
     color: white;
 }
 
 button {
     background-color: orange;
 }
+
+.loading{
+    text-align: center;
+    font-size: 1.2em;
+}
+
+
+/* QUIZ MODULE */
+
+
+
+/* QUIZ END */

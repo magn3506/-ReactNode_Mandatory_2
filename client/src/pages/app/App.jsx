@@ -1,36 +1,63 @@
+import React, { useState, useEffect } from 'react';
 import Layout from "../../components/layout/Layout";
+import axios from 'axios';
 import "./App.css";
+import Spinner from "../../components/spinner/Spinner";
+import QuizModule from "../../components/quiz/Quiz";
 
 
 function Home(props) {
 
-    const handleLogout = async event => {
-        event.preventDefault();
+    const [quizData, setQuizData] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
-        const response = await fetch("api/auth/logout", {
-            headers: {
-                Accept: 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
-            },
-            method: "POST",
-            body: JSON.stringify({}),
+    const URL = 'https://opentdb.com/api.php?amount=1&type=boolean';
 
-        });
+    useEffect(() => {
+        async function fetchData() {
 
-        const result = await response;
+            setIsLoading(true);
+            const result = await axios(
+                URL,
+            );
 
-        if (result.status === 200) {
-            props.history.push("/login");
+            if (result.status === 200) {
+                setTimeout(() => {
+                    setQuizData(result.data);
+                    setIsLoading(false);
+                }, 2000);
+            }
+
+
         }
+        fetchData();
+    }, []);
+
+
+    const nextQuestion = () => {
+        async function fetchData() {
+
+            setIsLoading(true);
+            const result = await axios(
+                URL,
+            );
+
+            if (result.status === 200) {
+                setTimeout(() => {
+                    setQuizData(result.data);
+                    setIsLoading(false);
+                }, 2000);
+            }
+
+
+        }
+        fetchData();
     }
 
-    return (
-        <Layout>
-            <h1>Hello "INSERT EMAIL" YOU ARE NOW LOGGET IN</h1>
 
-            <div>
-                GAME
-            </div>
+    return (
+        <Layout history={props.history} userEmail="user.name@email.com" >
+            {isLoading ? <Spinner /> : <QuizModule quizData={quizData && quizData.results[0]} nextQuestion={nextQuestion} />}
         </Layout>
     )
 
