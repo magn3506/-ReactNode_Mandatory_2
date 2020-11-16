@@ -1,5 +1,6 @@
-
+import Layout from "../../components/layout/Layout";
 import "./App.css";
+
 
 function Home(props) {
 
@@ -24,13 +25,13 @@ function Home(props) {
     }
 
     return (
-        <div>
+        <Layout>
             <h1>Hello "INSERT EMAIL" YOU ARE NOW LOGGET IN</h1>
             <button onClick={handleLogout}>LOG OUT</button>
             <div>
                 GAME
             </div>
-        </div>
+        </Layout>
     )
 
 
