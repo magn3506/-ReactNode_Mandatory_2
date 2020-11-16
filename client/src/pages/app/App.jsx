@@ -27,7 +27,7 @@ function Home(props) {
     return (
         <Layout>
             <h1>Hello "INSERT EMAIL" YOU ARE NOW LOGGET IN</h1>
-            <button onClick={handleLogout}>LOG OUT</button>
+
             <div>
                 GAME
             </div>

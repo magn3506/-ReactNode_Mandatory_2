@@ -1,0 +1,66 @@
+
+.layout_nav{
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    border: 1px solid red;
+    background: linear-gradient(180deg, #181911 0%, #101010 100%);
+    box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.25);
+    padding: 10px;
+    padding-right: 0px;
+}
+.layout_user_container{
+    display: flex;
+}
+.layout_user_img_con{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+    align-self: center;
+}
+.layout_user_img{
+    width: 100%;
+}
+.layout_user_email{
+    font-size: .8em;
+    align-self: center;
+    margin-left: 5px;
+
+}
+.layout_logo_container{
+    display: none;
+}
+.layout_logo{}
+.layout_button_container{}
+.layout_sign-out_btn{
+    height: 50px;
+    width: 150px;
+    padding-left: 20px;
+    text-align: left;
+    background: var(--color-green-4);
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 100px 0px 0px 100px;
+    text-transform: uppercase;
+    color: var(--color-green-1);
+
+
+}
+
+.layout_sign-out_btn:hover {
+  color: var(--color-orange-2);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+@media only screen and (min-width: 600px) {
+    .layout_sign-out_btn{
+       
+        padding-left: 20px;
+        text-align: center;
+        color: var(--color-green-1);
+        font-size: 1.1em;
+    
+    }
+  }
